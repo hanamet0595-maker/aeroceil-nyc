@@ -233,15 +233,126 @@ function FAQ(){ /* оставляем как было */
   );
 }
 
-function Contact(){
+function Contact() {
   return (
     <section id="contact" className="py-16 bg-neutral-50">
       <div className="mx-auto max-w-3xl px-4">
         <div className="rounded-3xl border border-black/10 bg-white p-6 shadow">
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">Request a Private Consultation</h2>
-          <form className="mt-6 grid gap-4" onSubmit={(e)=>e.preventDefault()}>
-            <input className="rounded-2xl border border-black/10 px-4 py-2" placeholder="Full Name"/>
-            <input className="rounded-2xl border border-black/10 px-4 py-2" placeholder="Email" type="email"/>
-            <input className="rounded-2xl border border-black/10 px-4 py-2" placeholder="Phone"/>
-            <textarea className="rounded-2xl border border-black/10 px-4 py-2" rows={4} placeholder="Project details (location, timeline, finishes)"/>
-            <button className="rounded-2xl px-4 py-2 bg-black text-white shadow hover:shadow-md inline-flex items-center gap
+          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight">
+            Request a Private Consultation
+          </h2>
+          <p className="mt-2 text-neutral-600">
+            Tell us about your project. A senior specialist will respond the same day.
+          </p>
+
+          <form className="mt-6 grid gap-4" onSubmit={(e) => e.preventDefault()}>
+            <input
+              className="rounded-2xl border border-black/10 px-4 py-2"
+              placeholder="Full Name"
+              aria-label="Full Name"
+            />
+            <input
+              className="rounded-2xl border border-black/10 px-4 py-2"
+              placeholder="Email"
+              type="email"
+              aria-label="Email"
+            />
+            <input
+              className="rounded-2xl border border-black/10 px-4 py-2"
+              placeholder="Phone"
+              aria-label="Phone"
+            />
+            <textarea
+              className="rounded-2xl border border-black/10 px-4 py-2"
+              placeholder="Project details (location, timeline, finishes)"
+              rows={4}
+              aria-label="Project details"
+            />
+            <button
+              type="submit"
+              className="rounded-2xl px-4 py-2 bg-black text-white shadow hover:shadow-md inline-flex items-center gap-2"
+            >
+              Send Request <Mail className="w-4 h-4" />
+            </button>
+          </form>
+
+          <div className="mt-6 grid sm:grid-cols-3 gap-4 text-sm text-neutral-700">
+            <a href="tel:+16067335555" className="flex items-center gap-2">
+              <Phone className="w-4 h-4" /> +1 (606) 733-5555
+            </a>
+            <a href="mailto:Han.amet0595@gmail.com" className="flex items-center gap-2">
+              <Mail className="w-4 h-4" /> Han.amet0595@gmail.com
+            </a>
+            <div className="flex items-center gap-2">
+              <MapPin className="w-4 h-4" /> Manhattan, NYC
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Footer({ push }) {
+  return (
+    <footer className="py-10 bg-black text-white">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <div className="font-semibold">AeroCeil NYC</div>
+            <div className="text-sm text-white/70">
+              Ultra-luxury stretch ceilings & light lines for Manhattan.
+            </div>
+          </div>
+          <div className="flex items-center gap-4 text-sm">
+            <button onClick={() => push("/")} className="hover:opacity-80">Home</button>
+            <button onClick={() => push("/projects")} className="hover:opacity-80">Projects</button>
+            <a href="#contact" className="hover:opacity-80">Contact</a>
+            <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:opacity-80 inline-flex items-center gap-2">
+              <Instagram className="w-4 h-4" /> Instagram
+            </a>
+          </div>
+        </div>
+        <div className="mt-6 text-xs text-white/60">
+          © {new Date().getFullYear()} AeroCeil NYC • Robots: index, follow
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function HomePage({ push }) {
+  return (
+    <main>
+      <Hero push={push} />
+      <HomeGallery />
+      <TypesAndSystems />
+      <FAQ />
+      <Contact />
+    </main>
+  );
+}
+
+function ProjectsPage() {
+  return (
+    <main className="pt-24 md:pt-28">
+      <ProjectsGrid />
+      <Contact />
+    </main>
+  );
+}
+
+export default function App() {
+  const { route, push } = useRoute();
+  const page = route === "/projects" ? <ProjectsPage /> : <HomePage push={push} />;
+  return (
+    <HelmetProvider>
+      <div className="min-h-screen bg-white text-neutral-900">
+        <SEO route={route} />
+        <Navbar push={push} route={route} />
+        {page}
+        <Footer push={push} />
+      </div>
+    </HelmetProvider>
+  );
+}
