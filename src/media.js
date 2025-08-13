@@ -1,9 +1,9 @@
 // src/media.js
 export const HOME_GALLERY = [
-  { src: "/home/home-1.webp", alt: "Warm perimeter backlight in beige living room" },
-  { src: "/home/home-2.webp", alt: "Satin stretch ceiling with warm cove lighting" },
-  { src: "/home/home-3.webp", alt: "High-gloss ceiling with chandelier reflections" },
-  { src: "/home/home-4.webp", alt: "Translucent backlit ceiling panel, uniform glow" },
+  { src: "/home/home-1.png", alt: "Warm perimeter backlight in beige living room" },
+  { src: "/home/home-2.png", alt: "Satin stretch ceiling with warm cove lighting" },
+  { src: "/home/home-3.png", alt: "High-gloss ceiling with chandelier reflections" },
+  { src: "/home/home-4.png", alt: "Translucent backlit ceiling panel, uniform glow" },
 ];
 
 export const PROJECTS = [
