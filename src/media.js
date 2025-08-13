@@ -1,10 +1,10 @@
 // src/media.js — PNG paths; images served from /public
 
 export const HOME_GALLERY = [
-  { src: "/home/home-1.png", alt: "Satin stretch ceiling with perimeter cove lighting" },
-  { src: "/home/home-2.png", alt: "High-gloss black living room with linear LED and spots" },
-  { src: "/home/home-3.png", alt: "RGB multi-level sculpted ceiling in bedroom" },
-  { src: "/home/home-4.png", alt: "Matte stretch ceiling, warm perimeter backlight" },
+  { public: "/home/home-1.png", alt: "Satin stretch ceiling with perimeter cove lighting" },
+  { public: "/home/home-2.png", alt: "High-gloss black living room with linear LED and spots" },
+  { public: "/home/home-3.png", alt: "RGB multi-level sculpted ceiling in bedroom" },
+  { public: "/home/home-4.png", alt: "Matte stretch ceiling, warm perimeter backlight" },
 ];
 
 export const PROJECTS = [
